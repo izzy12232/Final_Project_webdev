@@ -1,0 +1,38 @@
+# Database files
+/data/
+student-records.db
+database.sqlite
+*.db
+*.sqlite
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Environment variables
+.env
+.env.local
+
+# Node modules
+node_modules/
+
+# Dependency files
+package-lock.json
+yarn.lock
+
+# Logs
+*.log
+logs/
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Build files
+dist/
+build/

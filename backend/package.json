@@ -1,25 +1,27 @@
 {
+  "$schema": "",
   "name": "backend",
   "version": "1.0.0",
+  "description": "Backend API server",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node scripts/app.js",
+    "start": "node app.js",
+    "dev": "node app.js",
     "backup": "node scripts/backup.js",
     "migrate": "node scripts/migrate.js",
     "schedule-backups": "node scripts/backupScheduler.js"
   },
-  "keywords": [],
+  "keywords": ["backend", "api", "express"],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "body-parser": "^2.2.0",
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
-    "express": "^5.1.0",
+    "express": "^4.19.2",
     "express-validator": "^7.2.1",
-    "node-cron": "^4.1.0",
+    "node-cron": "^3.0.3",
     "sequelize": "^6.37.7",
     "sqlite3": "^5.1.7"
   }

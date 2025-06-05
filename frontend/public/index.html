@@ -1,30 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Meta tags for character encoding and responsive design -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Page title -->
   <title>Student Record System</title>
+  
+  <!-- Bootstrap CSS for styling -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom CSS styles -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Navbar -->
+  <!-- Navbar: Top navigation bar for site navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
+      <!-- Brand/logo -->
       <a class="navbar-brand" href="#">Student Records</a>
+      
+      <!-- Hamburger button for mobile menu toggle -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
+      <!-- Collapsible menu items -->
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+          <!-- Home navigation link -->
           <li class="nav-item">
             <a class="nav-link active" href="#" id="home-link">Home</a>
           </li>
+          <!-- Link to open Add Student form -->
           <li class="nav-item">
             <a class="nav-link" href="#" id="add-student-link">Add Student</a>
           </li>
         </ul>
+        
+        <!-- Search form on the right side of navbar -->
         <form class="d-flex ms-auto">
           <input class="form-control me-2" type="search" id="search-input" placeholder="Search...">
           <button class="btn btn-outline-light" type="button" id="search-btn">Search</button>
@@ -33,40 +51,54 @@
     </div>
   </nav>
 
-  <!-- Main Content -->
+  <!-- Main Content Container -->
   <div class="container mt-4">
     <div id="main-content">
-      <!-- Content loaded dynamically via JS -->
+      <!-- Content will be dynamically loaded here via JavaScript -->
     </div>
   </div>
 
-  <!-- Student Modal -->
+  <!-- Student Modal: Used for adding/editing student records -->
   <div class="modal fade" id="studentModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
+        <!-- Modal header with title and close button -->
         <div class="modal-header">
           <h5 class="modal-title" id="modalTitle">Add Student</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        
+        <!-- Modal body contains the student form -->
         <div class="modal-body">
           <form id="studentForm">
+            <!-- Hidden input to store the ID of the student being edited -->
             <input type="hidden" id="studentId">
+
+            <!-- Student ID input field -->
             <div class="mb-3">
               <label for="studentIdInput" class="form-label">Student ID</label>
               <input type="text" class="form-control" id="studentIdInput" required>
             </div>
+
+            <!-- Full Name input field -->
             <div class="mb-3">
               <label for="fullName" class="form-label">Full Name</label>
               <input type="text" class="form-control" id="fullName" required>
             </div>
+
+            <!-- Email input field -->
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
               <input type="email" class="form-control" id="email" required>
             </div>
+
+            <!-- Age input field -->
             <div class="mb-3">
               <label for="age" class="form-label">Age</label>
               <input type="text" class="form-control" id="age" required>
             </div>
+
+            <!-- Course dropdown select -->
             <div class="mb-3">
               <label for="course" class="form-label">Course</label>
               <select class="form-select" id="course" required>
@@ -79,6 +111,8 @@
                 <option value="Agriculture">Agriculture</option>
               </select>
             </div>
+
+            <!-- Year Level dropdown select -->
             <div class="mb-3">
               <label for="yearLevel" class="form-label">Year Level</label>
               <select class="form-select" id="yearLevel" required>
@@ -92,8 +126,12 @@
             </div>
           </form>
         </div>
+        
+        <!-- Modal footer with action buttons -->
         <div class="modal-footer">
+          <!-- Close modal button -->
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <!-- Save student button triggers form submission -->
           <button type="button" class="btn btn-primary" id="saveStudent">Save</button>
         </div>
       </div>
@@ -104,13 +142,18 @@
   <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
+        <!-- Header with confirmation title and close button -->
         <div class="modal-header">
           <h5 class="modal-title">Confirm Delete</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        
+        <!-- Body message confirming deletion -->
         <div class="modal-body">
           Are you sure you want to delete this student record?
         </div>
+        
+        <!-- Footer with cancel and confirm delete buttons -->
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
           <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
@@ -119,21 +162,26 @@
     </div>
   </div>
 
-  <!-- Toast Notifications -->
+  <!-- Toast Notifications: For showing temporary messages -->
   <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
     <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <!-- Toast header with title and close button -->
       <div class="toast-header">
         <strong class="me-auto" id="toastTitle">Notification</strong>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
+      
+      <!-- Toast body message -->
       <div class="toast-body" id="toastMessage">
         Operation completed successfully.
       </div>
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- Bootstrap JS bundle including Popper for modals and other components -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JavaScript file for application logic -->
   <script src="js/script.js"></script>
 </body>
 </html>

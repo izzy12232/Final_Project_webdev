@@ -1,4 +1,4 @@
-# Student Record System
+## Student Record System
 
 A comprehensive web application for managing student records with persistent data storage, built with Bootstrap (frontend) and Node.js + Express.js + SQLite (backend).
 
